@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "url": "https://images.pexels.com/photos/4032262/pexels-photo-4032262.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+        },
+        {
+            "id": "2",
+            "url": "https://images.pexels.com/photos/13426010/pexels-photo-13426010.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+        },
+        {
+            "id": "3",
+            "url": "https://images.pexels.com/photos/2684218/pexels-photo-2684218.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+        },
+        {
+            "id": "4",
+            "url": "https://images.pexels.com/photos/4062360/pexels-photo-4062360.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+        }
+    ]
+}
