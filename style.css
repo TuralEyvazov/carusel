@@ -131,3 +131,9 @@ body {
 .carusel-btn-right {
     right: 25%;
 }
+
+.cancel {
+    position: absolute;
+    top: 60px !important;
+    right: 100px;
+}

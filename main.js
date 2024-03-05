@@ -10,6 +10,11 @@ $(document).ready(() => {
     return data;
   };
 
+  const cancel = document.querySelector(".cancel");
+  cancel.addEventListener("click", () => {
+    $("#carusel").css("display", "none");
+  });
+
   const showData = (data) => {
     let container = document.querySelector(".container");
     container.innerHTML = "";
