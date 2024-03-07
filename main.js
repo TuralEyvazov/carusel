@@ -25,7 +25,7 @@ $(document).ready(() => {
         <div class="item hover ">
             <img src=${element.url} alt="">
             <span class="pop-up" id=${element.id}>
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
+               <i class="fa-solid fa-magnifying-glass-plus"></i>
             </span>
         </div>
         `;
