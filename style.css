@@ -124,11 +124,11 @@ body {
     cursor: pointer;
 }
 
-.carusel-btn-left {
+.carusel-btn-prev {
     left: 25%;
 }
 
-.carusel-btn-right {
+.carusel-btn-next {
     right: 25%;
 }
 

@@ -3,6 +3,9 @@ $(document).ready(() => {
     URL: "http://localhost:3002",
   };
 
+  const cancel = $(".cancel");
+  const carusel = $("#carusel");
+
   const getData = async () => {
     const res = await fetch(`${base.URL}/data`);
     const data = await res.json();
@@ -10,9 +13,8 @@ $(document).ready(() => {
     return data;
   };
 
-  const cancel = document.querySelector(".cancel");
-  cancel.addEventListener("click", () => {
-    $("#carusel").css("display", "none");
+  cancel.on("click", () => {
+    carusel.css("display", "none");
   });
 
   const showData = (data) => {
@@ -29,37 +31,39 @@ $(document).ready(() => {
         `;
     });
     $(".pop-up").on("click", function () {
-      let clickedItem = $(this)[0].id;
-      carusel(clickedItem);
+      let clickedItemid = +$(this)[0].id;
+      createCarusel(clickedItemid);
     });
   };
 
-  const carusel = (dataID) => {
-    let counter = +dataID;
+  const createCarusel = (dataID) => {
+    let counter = dataID;
+    let caruselImg = $("#carusel img")[0];
+    const prev = $(".carusel-btn-prev");
+    const next = $(".carusel-btn-next");
+    carusel.css("display", "flex");
+
     getData().then((data) => {
-      const chekImg = data.find((item) => item.id == dataID);
-      let carusels = $("#carusel img");
-      $("#carusel").css("display", "flex");
-      carusels[0].src = chekImg.url;
-      $(".carusel-btn-left").on("click", () => {
+      const checkedImg = data.find((item) => item.id == dataID);
+
+      caruselImg.src = checkedImg.url;
+
+      prev.on("click", () => {
         counter--;
         if (counter < 1) {
           counter = 4;
         }
         let getItem = data.find((item) => item.id == counter);
-        carusels[0].src = getItem.url;
-        console.log(getItem);
+        caruselImg.src = getItem.url;
       });
 
-      $(".carusel-btn-right").on("click", () => {
+      next.on("click", () => {
         counter++;
         if (counter > 4) {
           counter = 1;
         }
-        carusels[0].src = "";
         let getItem = data.find((item) => item.id == counter);
-        carusels[0].src = getItem.url;
-        console.log(getItem);
+        caruselImg.src = getItem.url;
       });
     });
   };
