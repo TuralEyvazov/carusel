@@ -13,10 +13,6 @@ $(document).ready(() => {
     return data;
   };
 
-  cancel.on("click", () => {
-    carusel.css("display", "none");
-  });
-
   const showData = (data) => {
     let container = document.querySelector(".container");
     container.innerHTML = "";
@@ -67,6 +63,10 @@ $(document).ready(() => {
       });
     });
   };
+
+  cancel.on("click", () => {
+    carusel.css("display", "none");
+  });
 
   getData();
 });
