@@ -16,17 +16,13 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 300px;
-    grid-template-areas:
-        "top top"
-        "left right"
-        "bottom bottom"
-    ;
-    grid-template-rows: 210px 180px 200px;
-    gap: 6px;
+    grid-template-columns: repeat(4, 360px);
+    grid-template-rows: repeat(2, 270px);
+    gap: 10px;
     border: 3px solid crimson;
-    padding: 10px;
+    padding: 6px;
     border-radius: 5px;
+    box-shadow: 0 0 20px 5px crimson;
 }
 
 .item {
@@ -35,21 +31,6 @@ body {
     justify-content: center;
 }
 
-.item:nth-child(1) {
-    grid-area: top;
-}
-
-.item:nth-child(4) {
-    grid-area: bottom;
-}
-
-.item:nth-child(2) {
-    grid-area: left;
-}
-
-.item:nth-child(3) {
-    grid-area: right;
-}
 
 .item img {
     width: 100%;
@@ -111,6 +92,7 @@ body {
 #carusel img {
     width: 60%;
     height: 80%;
+    object-fit: cover;
 }
 
 #carusel button {

@@ -47,7 +47,7 @@ $(document).ready(() => {
       prev.on("click", () => {
         counter--;
         if (counter < 1) {
-          counter = 4;
+          counter = +data.length;
         }
         let getItem = data.find((item) => item.id == counter);
         caruselImg.src = getItem.url;
@@ -55,7 +55,7 @@ $(document).ready(() => {
 
       next.on("click", () => {
         counter++;
-        if (counter > 4) {
+        if (counter > +data.length) {
           counter = 1;
         }
         let getItem = data.find((item) => item.id == counter);
