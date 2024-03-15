@@ -1,24 +1,14 @@
-$(document).ready(() => {
-  const base = {
-    URL: "./db.json",
-  };
+import { base } from "./db.js";
 
+$(document).ready(() => {
   const cancel = $(".cancel");
   const carusel = $("#carusel");
 
-  const getData = async () => {
-    const res = await fetch(`${base.URL}`);
-    const data = await res.json();
-    showData(data);
-    return data;
-  };
-
-  const showData = (data) => {
+  const showData = () => {
     let container = document.querySelector(".container");
     container.innerHTML = "";
-    console.log(data);
 
-    data.forEach((element) => {
+    base.forEach((element) => {
       container.innerHTML += `
         <div class="item hover ">
             <img src=${element.url} alt="">
@@ -28,6 +18,7 @@ $(document).ready(() => {
         </div>
         `;
     });
+
     $(".pop-up").on("click", function () {
       let clickedItemid = +$(this)[0].id;
       createCarusel(clickedItemid);
@@ -41,26 +32,23 @@ $(document).ready(() => {
     const next = $(".carusel-btn-next");
     carusel.css("display", "flex");
 
-    getData().then((data) => {
-      const checkedImg = data.find((item) => item.id == dataID);
-      caruselImg.src = checkedImg.url;
-      prev.on("click", () => {
-        counter--;
-        if (counter < 1) {
-          counter = +data.length;
-        }
-        let getItem = data.find((item) => item.id == counter);
-        caruselImg.src = getItem.url;
-      });
-
-      next.on("click", () => {
-        counter++;
-        if (counter > +data.length) {
-          counter = 1;
-        }
-        let getItem = data.find((item) => item.id == counter);
-        caruselImg.src = getItem.url;
-      });
+    const checkedImg = base.find((item) => item.id == dataID);
+    caruselImg.src = checkedImg.url;
+    next.on("click", () => {
+      counter++;
+      if (counter > +base.length) {
+        counter = 1;
+      }
+      let getItem = base.find((item) => item.id == counter);
+      caruselImg.src = getItem.url;
+    });
+    prev.on("click", () => {
+      counter--;
+      if (counter < 1) {
+        counter = +base.length;
+      }
+      let getItem = base.find((item) => item.id == counter);
+      caruselImg.src = getItem.url;
     });
   };
 
@@ -68,5 +56,5 @@ $(document).ready(() => {
     carusel.css("display", "none");
   });
 
-  getData();
+  showData();
 });
