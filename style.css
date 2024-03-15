@@ -19,7 +19,6 @@ body {
     grid-template-columns: repeat(4, 360px);
     grid-template-rows: repeat(2, 270px);
     gap: 10px;
-    /* border: 3px solid crimson; */
     padding: 6px;
     border-radius: 5px;
     box-shadow: 0 0 20px 5px #686868a4;
