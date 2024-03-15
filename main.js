@@ -1,13 +1,13 @@
 $(document).ready(() => {
   const base = {
-    URL: "http://localhost:3002",
+    URL: "./db.json",
   };
 
   const cancel = $(".cancel");
   const carusel = $("#carusel");
 
   const getData = async () => {
-    const res = await fetch(`${base.URL}/data`);
+    const res = await fetch(`${base.URL}`);
     const data = await res.json();
     showData(data);
     return data;
@@ -16,6 +16,8 @@ $(document).ready(() => {
   const showData = (data) => {
     let container = document.querySelector(".container");
     container.innerHTML = "";
+    console.log(data);
+
     data.forEach((element) => {
       container.innerHTML += `
         <div class="item hover ">
@@ -41,9 +43,7 @@ $(document).ready(() => {
 
     getData().then((data) => {
       const checkedImg = data.find((item) => item.id == dataID);
-
       caruselImg.src = checkedImg.url;
-
       prev.on("click", () => {
         counter--;
         if (counter < 1) {
